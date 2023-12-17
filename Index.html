@@ -42,7 +42,7 @@
 		}
 	</style>
 </head>
-<body>
+<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
 	<div class="container">
 		<button class="button" id="w">W</button>
 		<button class="button" id="a">A</button>
@@ -60,6 +60,31 @@
 				const key = button.id;
 				// Your code to press the key goes here
 			});
+		});
+	</script>
+	
+	<script type="text/javascript" src="classes.js"></script>
+	<script type="text/javascript" src="fix-webm-duration.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", () => {
+			if(document.location.href.startsWith("file:")) {
+				alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+			}else {
+				window.eaglercraftXOpts = {
+					container: "game_frame",
+					assetsURI: "assets.epk",
+					localesURI: "lang/",
+					servers: [
+						{ addr: "wss://sus.shhnowisnottheti.me", name: "Creacraft" },
+						{ addr: "wss://mc.asspixel.net", name: "As*pixel" },
+						{ addr: "wss://aeon-network.net/1.8", name: "Aeon" },
+						{ addr: "wss://beta.vanillacraftsmp.org/", name: "VanillaCraft" },
+						{ addr: "wss://mc.sealcentral.co", name: "SealCraft" },
+						{ addr: "wss://g.deev.is/eaglerx-reference", name:"ReferenceImplementation" }
+					]
+				};
+				main();
+			}
 		});
 	</script>
 </body>
